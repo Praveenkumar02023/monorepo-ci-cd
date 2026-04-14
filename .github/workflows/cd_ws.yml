@@ -2,6 +2,10 @@ name: Deploy the ws-server
 on:
     push:
         branches: [ main ]
+
+        paths:
+            - 'apps/ws-server/**'
+            - 'packages/**'
 jobs:
     build:
         runs-on: ubuntu-latest

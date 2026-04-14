@@ -2,6 +2,9 @@ name: Deploy the http-server
 on:
     push:
         branches: [ main ]
+        paths:
+        - 'apps/http-server/**'
+        - 'packages/**'
 jobs:
     build:
         runs-on: ubuntu-latest
