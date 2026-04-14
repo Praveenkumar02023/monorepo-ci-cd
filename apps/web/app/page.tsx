@@ -1,6 +1,5 @@
 import {prisma} from "@repo/db";
 
-
 export default async function Home() {
   
   const user = await prisma.user.findFirst();
@@ -11,3 +10,5 @@ export default async function Home() {
     </div>
   )
 }
+
+export const dynamic = 'force-dynamic';
