@@ -1,0 +1,32 @@
+name: Deploy Web App
+
+on:
+  push:
+    branches: [ main ]
+   
+    paths:
+      - 'apps/web/**'
+      - 'packages/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Docker login
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+        
+      - name: Build and push docker
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./apps/web/Dockerfile
+          push: true
+          tags: |
+            prvn2023/web-app:${{ github.sha }}
+            prvn2023/web-app:latest
