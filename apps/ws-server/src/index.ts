@@ -6,11 +6,11 @@ import {prisma} from "@repo/db"
 const wss = new WebSocketServer({port : 8080});
 
 
-wss.on("connection" , (ws) => {
+wss.on("connection" , async (ws) => {
 
     console.log("connected");
     
-    prisma.user.create({
+   const user = await prisma.user.create({
 
         data:{
 
@@ -21,5 +21,7 @@ wss.on("connection" , (ws) => {
 
     })
 
+    console.log(user);
+    
 
 })
