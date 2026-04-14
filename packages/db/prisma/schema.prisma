@@ -29,5 +29,4 @@ model Todo{
   Done Boolean @default(false)
   userId String
   user User @relation(fields:[userId],references:[id])
-
 }
