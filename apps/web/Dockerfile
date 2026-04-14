@@ -14,7 +14,10 @@ COPY packages/typescript-config ./packages/typescript-config
 
 COPY apps/web ./apps/web
 
-RUN pnpm install && pnpm --filter @repo/ui run build && pnpm --filter @repo/db run build
+RUN pnpm install && \
+    npx prisma generate --schema=./packages/db/prisma/schema.prisma && \
+    pnpm --filter @repo/db run build
+
 
 WORKDIR /app/apps/web
 
