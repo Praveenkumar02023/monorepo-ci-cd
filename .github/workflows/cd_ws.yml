@@ -21,5 +21,5 @@ jobs:
                 context: .
                 file: ./apps/ws-server/Dockerfile
                 push: true
-                tags: prvn2023/http-server:${{github.sha}}
+                tags: prvn2023/ws-server:${{github.sha}}
 
